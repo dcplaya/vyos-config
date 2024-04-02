@@ -71,16 +71,11 @@ set firewall ipv4 name local-to-guest rule 130 log
 set firewall ipv4 name local-to-guest rule 130 protocol all
 set firewall ipv4 name local-to-guest rule 130 state established 
 set firewall ipv4 name local-to-guest rule 130 state related 
-# set firewall ipv4 name local-to-guest rule 130 state new disable
-# set firewall ipv4 name local-to-guest rule 130 state invalid disable
 
 set firewall ipv4 name local-to-guest rule 140 action drop
 set firewall ipv4 name local-to-guest rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-guest rule 140 log 
 set firewall ipv4 name local-to-guest rule 140 protocol all
-# set firewall ipv4 name local-to-guest rule 140 state established disable
-# set firewall ipv4 name local-to-guest rule 140 state related disable
-# set firewall ipv4 name local-to-guest rule 140 state new disable
 set firewall ipv4 name local-to-guest rule 140 state invalid
 
 set firewall ipv4 name local-to-guest rule 1000 action accept
@@ -88,14 +83,14 @@ set firewall ipv4 name local-to-guest rule 1000 description "Rule: Allow DHCP Re
 set firewall ipv4 name local-to-guest rule 1000 log
 set firewall ipv4 name local-to-guest rule 1000 protocol tcp_udp
 set firewall ipv4 name local-to-guest rule 1000 destination group port-group 'services_dhcp'
-set firewall ipv4 name local-to-guest rule 1000 destination group address-group 'services_dhcp'
+# set firewall ipv4 name local-to-guest rule 1000 destination group address-group 'services_dhcp'
 
 set firewall ipv4 name local-to-guest rule 1001 action accept
 set firewall ipv4 name local-to-guest rule 1001 description "Rule: Allow NTP Requests"
 set firewall ipv4 name local-to-guest rule 1001 log
 set firewall ipv4 name local-to-guest rule 1001 protocol tcp_udp
 set firewall ipv4 name local-to-guest rule 1001 destination group port-group 'services_ntp'
-set firewall ipv4 name local-to-guest rule 1001 destination group address-group 'services_ntp'
+# set firewall ipv4 name local-to-guest rule 1001 destination group address-group 'services_ntp'
 
 # Local Zone -> IoT Zone
 # DeDefault block with standard rules from 100-140. Accept DHCP & NTP services & mDNS
@@ -158,16 +153,11 @@ set firewall ipv4 name local-to-iot rule 130 log
 set firewall ipv4 name local-to-iot rule 130 protocol all
 set firewall ipv4 name local-to-iot rule 130 state established 
 set firewall ipv4 name local-to-iot rule 130 state related 
-# set firewall ipv4 name local-to-iot rule 130 state new disable
-# set firewall ipv4 name local-to-iot rule 130 state invalid disable
 
 set firewall ipv4 name local-to-iot rule 140 action drop
 set firewall ipv4 name local-to-iot rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-iot rule 140 log 
 set firewall ipv4 name local-to-iot rule 140 protocol all
-# set firewall ipv4 name local-to-iot rule 140 state established disable
-# set firewall ipv4 name local-to-iot rule 140 state related disable
-# set firewall ipv4 name local-to-iot rule 140 state new disable
 set firewall ipv4 name local-to-iot rule 140 state invalid
 
 set firewall ipv4 name local-to-iot rule 1000 action accept
@@ -175,14 +165,14 @@ set firewall ipv4 name local-to-iot rule 1000 description "Rule: Allow DHCP Requ
 set firewall ipv4 name local-to-iot rule 1000 log
 set firewall ipv4 name local-to-iot rule 1000 protocol tcp_udp
 set firewall ipv4 name local-to-iot rule 1000 destination group port-group 'services_dhcp'
-set firewall ipv4 name local-to-iot rule 1000 destination group address-group 'services_dhcp'
+# set firewall ipv4 name local-to-iot rule 1000 destination group address-group 'services_dhcp'
 
 set firewall ipv4 name local-to-iot rule 1001 action accept
 set firewall ipv4 name local-to-iot rule 1001 description "Rule: Allow NTP Requests"
 set firewall ipv4 name local-to-iot rule 1001 log
 set firewall ipv4 name local-to-iot rule 1001 protocol tcp_udp
 set firewall ipv4 name local-to-iot rule 1001 destination group port-group 'services_ntp'
-set firewall ipv4 name local-to-iot rule 1001 destination group address-group 'services_ntp'
+# set firewall ipv4 name local-to-iot rule 1001 destination group address-group 'services_ntp'
 
 set firewall ipv4 name local-to-iot rule 1002 action accept
 set firewall ipv4 name local-to-iot rule 1002 description "Rule: Allow mDNS Requests"
@@ -252,16 +242,11 @@ set firewall ipv4 name local-to-trusted rule 130 log
 set firewall ipv4 name local-to-trusted rule 130 protocol all
 set firewall ipv4 name local-to-trusted rule 130 state established 
 set firewall ipv4 name local-to-trusted rule 130 state related 
-# set firewall ipv4 name local-to-trusted rule 130 state new disable
-# set firewall ipv4 name local-to-trusted rule 130 state invalid disable
 
 set firewall ipv4 name local-to-trusted rule 140 action drop
 set firewall ipv4 name local-to-trusted rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-trusted rule 140 log 
 set firewall ipv4 name local-to-trusted rule 140 protocol all
-# set firewall ipv4 name local-to-trusted rule 140 state established disable
-# set firewall ipv4 name local-to-trusted rule 140 state related disable
-# set firewall ipv4 name local-to-trusted rule 140 state new disable
 set firewall ipv4 name local-to-trusted rule 140 state invalid
 
 set firewall ipv4 name local-to-trusted rule 1000 action accept
@@ -269,14 +254,14 @@ set firewall ipv4 name local-to-trusted rule 1000 description "Rule: Allow DHCP 
 set firewall ipv4 name local-to-trusted rule 1000 log
 set firewall ipv4 name local-to-trusted rule 1000 protocol tcp_udp
 set firewall ipv4 name local-to-trusted rule 1000 destination group port-group 'services_dhcp'
-set firewall ipv4 name local-to-trusted rule 1000 destination group address-group 'services_dhcp'
+# set firewall ipv4 name local-to-trusted rule 1000 destination group address-group 'services_dhcp'
 
 set firewall ipv4 name local-to-trusted rule 1001 action accept
 set firewall ipv4 name local-to-trusted rule 1001 description "Rule: Allow NTP Requests"
 set firewall ipv4 name local-to-trusted rule 1001 log
 set firewall ipv4 name local-to-trusted rule 1001 protocol tcp_udp
 set firewall ipv4 name local-to-trusted rule 1001 destination group port-group 'services_ntp'
-set firewall ipv4 name local-to-trusted rule 1001 destination group address-group 'services_ntp'
+# set firewall ipv4 name local-to-trusted rule 1001 destination group address-group 'services_ntp'
 
 set firewall ipv4 name local-to-trusted rule 1002 action accept
 set firewall ipv4 name local-to-trusted rule 1002 description "Rule: Allow mDNS Requests"
@@ -353,16 +338,11 @@ set firewall ipv4 name local-to-untrusted rule 130 log
 set firewall ipv4 name local-to-untrusted rule 130 protocol all
 set firewall ipv4 name local-to-untrusted rule 130 state established 
 set firewall ipv4 name local-to-untrusted rule 130 state related 
-# set firewall ipv4 name local-to-untrusted rule 130 state new disable
-# set firewall ipv4 name local-to-untrusted rule 130 state invalid disable
 
 set firewall ipv4 name local-to-untrusted rule 140 action drop
 set firewall ipv4 name local-to-untrusted rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-untrusted rule 140 log 
 set firewall ipv4 name local-to-untrusted rule 140 protocol all
-# set firewall ipv4 name local-to-untrusted rule 140 state established disable
-# set firewall ipv4 name local-to-untrusted rule 140 state related disable
-# set firewall ipv4 name local-to-untrusted rule 140 state new disable
 set firewall ipv4 name local-to-untrusted rule 140 state invalid
 
 set firewall ipv4 name local-to-untrusted rule 1000 action accept
@@ -370,14 +350,14 @@ set firewall ipv4 name local-to-untrusted rule 1000 description "Rule: Allow DHC
 set firewall ipv4 name local-to-untrusted rule 1000 log
 set firewall ipv4 name local-to-untrusted rule 1000 protocol tcp_udp
 set firewall ipv4 name local-to-untrusted rule 1000 destination group port-group 'services_dhcp'
-set firewall ipv4 name local-to-untrusted rule 1000 destination group address-group 'services_dhcp'
+# set firewall ipv4 name local-to-untrusted rule 1000 destination group address-group 'services_dhcp'
 
 set firewall ipv4 name local-to-untrusted rule 1001 action accept
 set firewall ipv4 name local-to-untrusted rule 1001 description "Rule: Allow NTP Requests"
 set firewall ipv4 name local-to-untrusted rule 1001 log
 set firewall ipv4 name local-to-untrusted rule 1001 protocol tcp_udp
 set firewall ipv4 name local-to-untrusted rule 1001 destination group port-group 'services_ntp'
-set firewall ipv4 name local-to-untrusted rule 1001 destination group address-group 'services_ntp'
+# set firewall ipv4 name local-to-untrusted rule 1001 destination group address-group 'services_ntp'
 
 # Local Zone -> Container Zone
 # Default accept with standard rules from 100-140. Accept DNS services
@@ -440,16 +420,11 @@ set firewall ipv4 name local-to-containers rule 130 log
 set firewall ipv4 name local-to-containers rule 130 protocol all
 set firewall ipv4 name local-to-containers rule 130 state established 
 set firewall ipv4 name local-to-containers rule 130 state related 
-# set firewall ipv4 name local-to-containers rule 130 state new disable
-# set firewall ipv4 name local-to-containers rule 130 state invalid disable
 
 set firewall ipv4 name local-to-containers rule 140 action drop
 set firewall ipv4 name local-to-containers rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-containers rule 140 log 
 set firewall ipv4 name local-to-containers rule 140 protocol all
-# set firewall ipv4 name local-to-containers rule 140 state established disable
-# set firewall ipv4 name local-to-containers rule 140 state related disable
-# set firewall ipv4 name local-to-containers rule 140 state new disable
 set firewall ipv4 name local-to-containers rule 140 state invalid
 
 set firewall ipv4 name local-to-containers rule 1000 action accept
@@ -457,7 +432,7 @@ set firewall ipv4 name local-to-containers rule 1000 description "Rule: Allow DN
 set firewall ipv4 name local-to-containers rule 1000 log
 set firewall ipv4 name local-to-containers rule 1000 protocol tcp_udp
 set firewall ipv4 name local-to-containers rule 1000 destination group port-group 'services_dns'
-set firewall ipv4 name local-to-containers rule 1000 destination group address-group 'services_dns'
+# set firewall ipv4 name local-to-containers rule 1000 destination group address-group 'services_dns'
 
 # Local Zone -> WAN Zone
 # Default accept with standard rules from 100-140.
@@ -520,14 +495,9 @@ set firewall ipv4 name local-to-wan rule 130 log
 set firewall ipv4 name local-to-wan rule 130 protocol all
 set firewall ipv4 name local-to-wan rule 130 state established 
 set firewall ipv4 name local-to-wan rule 130 state related 
-# set firewall ipv4 name local-to-wan rule 130 state new disable
-# set firewall ipv4 name local-to-wan rule 130 state invalid disable
 
 set firewall ipv4 name local-to-wan rule 140 action drop
 set firewall ipv4 name local-to-wan rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name local-to-wan rule 140 log 
 set firewall ipv4 name local-to-wan rule 140 protocol all
-# set firewall ipv4 name local-to-wan rule 140 state established disable
-# set firewall ipv4 name local-to-wan rule 140 state related disable
-# set firewall ipv4 name local-to-wan rule 140 state new disable
 set firewall ipv4 name local-to-wan rule 140 state invalid

@@ -292,16 +292,11 @@ set firewall ipv4 name iot-to-local rule 130 log
 set firewall ipv4 name iot-to-local rule 130 protocol all
 set firewall ipv4 name iot-to-local rule 130 state established 
 set firewall ipv4 name iot-to-local rule 130 state related 
-# set firewall ipv4 name iot-to-local rule 130 state new disable
-# set firewall ipv4 name iot-to-local rule 130 state invalid disable
 
 set firewall ipv4 name iot-to-local rule 140 action drop
 set firewall ipv4 name iot-to-local rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name iot-to-local rule 140 log 
 set firewall ipv4 name iot-to-local rule 140 protocol all
-# set firewall ipv4 name iot-to-local rule 140 state established disable
-# set firewall ipv4 name iot-to-local rule 140 state related disable
-# set firewall ipv4 name iot-to-local rule 140 state new disable
 set firewall ipv4 name iot-to-local rule 140 state invalid
 
 set firewall ipv4 name iot-to-local rule 1000 action accept
@@ -379,16 +374,11 @@ set firewall ipv4 name iot-to-containers rule 130 log
 set firewall ipv4 name iot-to-containers rule 130 protocol all
 set firewall ipv4 name iot-to-containers rule 130 state established 
 set firewall ipv4 name iot-to-containers rule 130 state related 
-# set firewall ipv4 name iot-to-containers rule 130 state new disable
-# set firewall ipv4 name iot-to-containers rule 130 state invalid disable
 
 set firewall ipv4 name iot-to-containers rule 140 action drop
 set firewall ipv4 name iot-to-containers rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name iot-to-containers rule 140 log 
 set firewall ipv4 name iot-to-containers rule 140 protocol all
-# set firewall ipv4 name iot-to-containers rule 140 state established disable
-# set firewall ipv4 name iot-to-containers rule 140 state related disable
-# set firewall ipv4 name iot-to-containers rule 140 state new disable
 set firewall ipv4 name iot-to-containers rule 140 state invalid
 
 set firewall ipv4 name iot-to-containers rule 1000 action accept
@@ -461,16 +451,11 @@ set firewall ipv4 name iot-to-wan rule 130 log
 set firewall ipv4 name iot-to-wan rule 130 protocol all
 set firewall ipv4 name iot-to-wan rule 130 state established
 set firewall ipv4 name iot-to-wan rule 130 state related 
-# set firewall ipv4 name iot-to-wan rule 130 state new disable
-# set firewall ipv4 name iot-to-wan rule 130 state invalid disable
 
 set firewall ipv4 name iot-to-wan rule 140 action drop
 set firewall ipv4 name iot-to-wan rule 140 description "Rule: Drop Invalid"
 set firewall ipv4 name iot-to-wan rule 140 log 
 set firewall ipv4 name iot-to-wan rule 140 protocol all
-# set firewall ipv4 name iot-to-wan rule 140 state established disable
-# set firewall ipv4 name iot-to-wan rule 140 state related disable
-# set firewall ipv4 name iot-to-wan rule 140 state new disable
 set firewall ipv4 name iot-to-wan rule 140 state invalid
 
 set firewall ipv4 name iot-to-wan rule 1000 action accept
@@ -482,7 +467,6 @@ set firewall ipv4 name iot-to-wan rule 1000 source group domain-group 'domains_v
 set firewall ipv4 name iot-to-wan rule 1000 state established 
 set firewall ipv4 name iot-to-wan rule 1000 state related 
 set firewall ipv4 name iot-to-wan rule 1000 state new 
-# set firewall ipv4 name iot-to-wan rule 1000 state invalid disable
 
 set firewall ipv4 name iot-to-wan rule 1010 action accept
 set firewall ipv4 name iot-to-wan rule 1010 description "Rule: Allow Samsung Smart Things To Contact Cloud"
@@ -492,5 +476,4 @@ set firewall ipv4 name iot-to-wan rule 1010 source port http,https
 set firewall ipv4 name iot-to-wan rule 1010 source group domain-group 'domains_samsung_smart_things'
 set firewall ipv4 name iot-to-wan rule 1010 state established 
 set firewall ipv4 name iot-to-wan rule 1010 state related 
-set firewall ipv4 name iot-to-wan rule 1010 state new 
-# set firewall ipv4 name iot-to-wan rule 1010 state invalid disable
+set firewall ipv4 name iot-to-wan rule 1010 state new
