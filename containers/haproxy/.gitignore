@@ -6,4 +6,5 @@
 
 !/config/
 /config/*
+!/config/maps/
 !/config/haproxy.cfg

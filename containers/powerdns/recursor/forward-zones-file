@@ -1,0 +1,18 @@
+#+elcarpenter.com=10.0.0.30:53
+#+cluster-1.elcarpenter.com=10.0.0.30:53
+#+cluster-2.elcarpenter.com=10.0.0.30:53
+#+iot.elcarpenter.com=10.0.0.30:53
+#+mgmt.elcarpenter.com=10.0.0.30:53
+#+lan.elcarpenter.com=10.0.0.30:53
+
+
+# Need to contact external DNS servers to grab real IP
++device.elcarpenter.com=1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, 2606:4700:4700::1001
++vpn.elcarpenter.com=1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, 2606:4700:4700::1001
+
+# Put this below everthing else as a fallthrough
++elcarpenter.com=10.0.0.30:53
+
+# Default forward to NextDNS
+# Disabled the final fallback. No lookups that arent part of my FQDN should have been filtered by DNSDist first before reaching this
+#+.=45.90.28.123, 45.90.30.123, 2a07:a8c0::35:f3af, 2a07:a8c1::35:f3af

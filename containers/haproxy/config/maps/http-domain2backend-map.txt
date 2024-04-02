@@ -1,0 +1,31 @@
+# http backends
+# Use regular expressions
+
+# Status Page
+status\.elcarpenter\.com				status-backend
+
+# Unifi Cloudkey
+unifi\.elcarpenter\.com 				unifi-backend
+
+# Valetudo Vacuum
+vac\.elcarpenter\.com 					valetudo-backend
+vacuum\.elcarpenter\.com 				valetudo-backend
+arnold\.elcarpenter\.com 				valetudo-backend
+
+# Proxmox Cluster
+pve\.elcarpenter\.com 					proxmox-backend
+s3\.elcarpenter\.com                    s3-backend
+([a-z0-9_\.-]+)\.(s3.elcarpenter.com)   s3-backend
+ceph\.elcarpenter\.com                  ceph-dashboard
+
+# Cluster-1
+# cluster-1\.elcarpenter\.com			cluster-1-backend
+
+# Nvidia Licensing Server FastAPI-DLS
+nvidia\.elcarpenter\.com 				nvidia-backend
+
+# LLDAP
+auth\.elcarpenter\.com                  lldap-backend
+ldap\.elcarpenter\.com                  lldap-backend
+
+powerdns\.elcarpenter\.com	        	powerdns-backend

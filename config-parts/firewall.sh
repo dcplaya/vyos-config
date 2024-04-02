@@ -6,96 +6,59 @@ set firewall global-options state-policy related action 'accept'
 set firewall global-options all-ping enable
 set firewall global-options broadcast-ping disable
 
-# Router (VyOS itself)
-set firewall group address-group router-addresses address 10.0.0.1
-set firewall group address-group router-addresses address 127.0.0.1
-set firewall group ipv6-address-group router-addresses-ipv6 address fe80::e63a:6eff:fe5a:f805
-set firewall group ipv6-address-group router-addresses-ipv6 address ::1
+# Address Groups
+set firewall group address-group blocked_networks address '1.0.1.21'
+set firewall group address-group bogons_ipv4 address '100.64.0.1-100.127.255.254'
+set firewall group address-group services_plex address '10.200.1.53'
+set firewall group address-group services_dns address '10.0.0.4'
+set firewall group address-group services_dhcp address '10.255.253.1'
+set firewall group address-group services_ntp address '10.255.253.1'
+set firewall group address-group services_haproxy address '10.0.0.102'
+set firewall group address-group services_home_automation address '10.200.1.52'
+set firewall group address-group services_home_automation address '10.200.1.54-10.200.1.56'
+set firewall group address-group services_home_automation address '10.200.1.60'
+set firewall group address-group services_home_automation address '10.200.1.62'
 
-# k8s nodes
-set firewall group address-group k8s_nodes address '10.1.1.31-10.1.1.33' # Servers vLAN
-set firewall group address-group k8s_nodes address '10.1.3.121-10.1.3.123' # IoT vLAN
+# Network Groups
+set firewall group network-group internal_lan_networks network "10.0.0.0/8"
+set firewall group network-group internal_lan_networks network "127.0.0.1/32"
+set firewall group network-group internal_lan_networks network "172.16.0.0/12"
+set firewall group network-group internal_lan_networks network "192.168.0.0/16"
 
-# k8s ingress client devices
-set firewall group address-group k8s_ingress_allowed address '10.1.3.16' # Apple TV
-set firewall group address-group k8s_ingress_allowed address '10.1.3.35' # Shared iPad
-set firewall group address-group k8s_ingress_allowed address '10.1.3.36' # iPad Eva
-set firewall group address-group k8s_ingress_allowed address '10.1.3.53' # Tablet Hallway
-set firewall group address-group k8s_ingress_allowed address '10.1.3.54' # Tablet Garage
-set firewall group address-group k8s_ingress_allowed address '192.168.2.11' # Work machine
-set firewall group address-group k8s_ingress_allowed address '192.168.2.12' # Work machine
+# Domain Groups
+set firewall group domain-group domains_plex address "plex.${SECRET_DOMAIN}"
+set firewall group domain-group domains_plex address "plex.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "home.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "home.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "esphome.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "esphome.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "mqtt.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "mqtt.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "hyperhdr.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "hyperhdr.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "frigate.${SECRET_DOMAIN}"
+set firewall group domain-group domains_home_automation address "frigate.cluster-1.${SECRET_DOMAIN}"
+set firewall group domain-group domains_vacuums address "arnold.${SECRET_DOMAIN}"
+set firewall group domain-group domains_vacuums address "vac.${SECRET_DOMAIN}"
+set firewall group domain-group domains_vacuums address "vacuum.${SECRET_DOMAIN}"
+set firewall group domain-group domains_vacuums address "vacuum01.iot.${SECRET_DOMAIN}"
+set firewall group domain-group domains_samsung_smart_things address "samsung-washer.iot.${SECRET_DOMAIN}"
+set firewall group domain-group domains_samsung_smart_things address "samsung-dryer.iot.${SECRET_DOMAIN}"
+set firewall group domain-group domains_samsung_smart_things address "samsung-fridge.iot.${SECRET_DOMAIN}"
+set firewall group domain-group domains_ssh_jumphost address "workhorse.mgmt.${SECRET_DOMAIN}"
 
-# k8s cluster services
-set firewall group address-group k8s_api address '10.5.0.2'
-set firewall group address-group k8s_hass address '10.1.3.151'
-set firewall group address-group k8s_scrypted address '10.1.3.153'
-set firewall group address-group k8s_ingress address '10.45.0.1'
-set firewall group address-group k8s_ingress address '10.45.0.3'
-set firewall group address-group k8s_mqtt address '10.45.0.10'
-set firewall group address-group k8s_plex address '10.45.0.20'
-set firewall group address-group k8s_vector_aggregator address '10.45.0.2'
-
-# MQTT client devices
-set firewall group address-group mqtt_clients address '10.1.2.21' # Bernd
-set firewall group address-group mqtt_clients address '10.1.3.18' # Vacuum livingroom
-set firewall group address-group mqtt_clients address '10.1.3.22' # Vacuum upstairs
-set firewall group address-group mqtt_clients address '10.1.3.38' # Ventilation ESP
-
-# Plex client devices
-set firewall group address-group plex_clients address '10.1.2.21' # Bernd
-set firewall group address-group plex_clients address '10.1.2.31'
-set firewall group address-group plex_clients address '10.1.2.22' # Man-Yie
-set firewall group address-group plex_clients address '10.1.2.33-10.1.2.34'
-set firewall group address-group plex_clients address '10.1.2.35' # Eva
-set firewall group address-group plex_clients address '10.1.2.36' # Shared iPad
-set firewall group address-group plex_clients address '10.1.3.16' # Apple TV
-
-# Printers
-set firewall group address-group printers address '10.1.3.55'
-
-# 3D printer
-set firewall group port-group bambu-discovery port '1990'
-set firewall group port-group bambu-discovery port '2021'
-
-set firewall group address-group bambu-printers address '10.1.3.11'
-
-# Printer client machines
-set firewall group address-group printer_allowed address '192.168.2.11'
-
-# Scanners
-set firewall group address-group scanners address '10.1.3.55'
-
-# Sonos controllers
-set firewall group port-group sonos-controller-api port '1400'
-set firewall group port-group sonos-controller-discovery port '1900'
-
-set firewall group address-group sonos_controllers address '10.1.2.21' # Bernd
-set firewall group address-group sonos_controllers address '10.1.2.31'
-set firewall group address-group sonos_controllers address '10.1.2.22' # Man-Yie
-set firewall group address-group sonos_controllers address '10.1.2.33-10.1.2.34'
-set firewall group address-group sonos_controllers address '10.1.3.36' # Shared
-
-# Sonos players
-set firewall group port-group sonos-player-discovery port '1900'
-
-set firewall group address-group sonos_players address '10.1.3.61-10.1.3.67'
-
-# Unifi devices
-set firewall group address-group unifi_devices address '10.1.0.11-10.1.0.13' # Switches
-set firewall group address-group unifi_devices address '10.1.0.21-10.1.0.24' # AP's
-
-# Apple devices
-set firewall group address-group apple_devices address '10.1.3.16' # Apple TV
-
-set firewall group port-group apple_services_ports port '3722'
-
-# Vyos containers addresses
-set firewall group address-group vyos_coredns address '10.5.0.3'
-set firewall group address-group vyos_dnsdist address '10.5.0.4'
-set firewall group address-group vyos_unifi address '10.5.0.10'
-
-# Storage devices
-set firewall group address-group nas address '10.1.1.12'
-
-# Port groups
-set firewall group port-group wireguard port '51820'
+# Port Groups
+set firewall group port-group blocked_protocols port 'fido'
+set firewall group port-group services_dns port 'domain'
+set firewall group port-group services_dns port 'domain-s'
+set firewall group port-group services_dhcp port '67'
+set firewall group port-group services_dhcp port '68'
+set firewall group port-group services_ntp port 'ntp'
+set firewall group port-group services_http port 'http'
+set firewall group port-group services_http port 'https'
+set firewall group port-group services_mdns port 'mdns'
+set firewall group port-group services_ssh port 'ssh'
+set firewall group port-group services_bgp_ospf port 'bgp'
+set firewall group port-group services_bgp_ospf port '89'
+set firewall group port-group services_wireguard port '51820'
+set firewall group port-group services_plex port '32400'

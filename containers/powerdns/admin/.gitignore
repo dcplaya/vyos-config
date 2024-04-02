@@ -4,9 +4,3 @@
 # Track certain files and directories
 !.gitignore
 
-!/lego-auto/
-!/lldap/
-!/powerdns/
-!/dnsdist/
-!/haproxy/
-!/unifi/
