@@ -14,13 +14,3 @@ set service ntp server time.cloudflare.com nts
 set service ssh listen-address '10.255.253.1'
 set service ssh disable-password-authentication
 set service ssh port '22'
-
-# Dynamic DNS
-set service dns dynamic name cloudflare address web url 'http://checkip.dyndns.com/'
-set service dns dynamic name cloudflare host-name "er1.device.${SECRET_DOMAIN}"
-set service dns dynamic name cloudflare host-name "vpn.${SECRET_DOMAIN}"
-set service dns dynamic name cloudflare host-name "ipv4.${SECRET_DOMAIN}"
-set service dns dynamic name cloudflare password "${SECRET_CLOUDFLARE_DYNDNS_TOKEN}"
-set service dns dynamic name cloudflare protocol 'cloudflare'
-set service dns dynamic name cloudflare username "drewmich@${SECRET_DOMAIN}"
-set service dns dynamic name cloudflare zone "${SECRET_DOMAIN}"

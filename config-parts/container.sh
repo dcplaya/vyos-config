@@ -150,7 +150,6 @@ set container name speedtest-exporter restart 'on-failure'
 set container name speedtest-exporter shared-memory '0'
 
 # unifi
-set container name unifi disable
 set container name unifi description 'Unifi Controller'
 set container name unifi environment PGID value '102'
 set container name unifi environment PUID value '1002'
@@ -162,7 +161,7 @@ set container name unifi network containers address '10.0.0.220'
 set container name unifi restart 'on-failure'
 set container name unifi shared-memory '0'
 set container name unifi volume certs destination '/usr/lib/unifi/cert'
-set container name unifi volume certs mode 'ro'
+set container name unifi volume certs mode 'rw'
 set container name unifi volume certs source '/config/containers/lego-auto'
 set container name unifi volume data destination '/usr/lib/unifi/data'
 set container name unifi volume data mode 'rw'

@@ -4,7 +4,7 @@ set system config-management commit-archive
 set system config-management commit-revisions '100'
 
 # set system domain-name "${SECRET_DOMAIN}"
-# set system host-name 'gateway'
+set system host-name 'gateway'
 
 set system ipv6 disable-forwarding
 
