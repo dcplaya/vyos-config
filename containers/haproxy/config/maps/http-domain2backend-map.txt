@@ -29,3 +29,5 @@ auth\.elcarpenter\.com                  lldap-backend
 ldap\.elcarpenter\.com                  lldap-backend
 
 powerdns\.elcarpenter\.com	        	powerdns-backend
+
+librenms\.elcarpenter\.com	        	librenms-backend
