@@ -277,6 +277,13 @@ set firewall ipv4 name local-to-trusted rule 1003 protocol 'tcp_udp'
 set firewall ipv4 name local-to-trusted rule 1003 destination group port-group 'services_bgp_ospf'
 set firewall ipv4 name local-to-trusted rule 1003 source group port-group 'services_bgp_ospf'
 
+set firewall ipv4 name local-to-trusted rule 1004 action accept
+set firewall ipv4 name local-to-trusted rule 1004 description "Rule: Allow SSH From VyOS"
+set firewall ipv4 name local-to-trusted rule 1004 log
+set firewall ipv4 name local-to-trusted rule 1004 protocol 'tcp'
+set firewall ipv4 name local-to-trusted rule 1004 destination group port-group 'services_ssh'
+set firewall ipv4 name local-to-trusted rule 1004 destination group domain-group 'domains_ssh_jumphost'
+
 # Local Zone -> Untrusted Zone
 # Default block with standard rules from 100-140. Accept DHCP & NTP services
 set firewall ipv4 name local-to-untrusted default-action 'drop'
