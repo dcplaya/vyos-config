@@ -167,6 +167,66 @@ set container name unifi volume data destination '/usr/lib/unifi/data'
 set container name unifi volume data mode 'rw'
 set container name unifi volume data source '/config/containers/unifi/config'
 
+# LibreNMS
+set container name librenms cap-add 'net-admin'
+set container name librenms cap-add 'net-raw'
+set container name librenms environment CACHE_DRIVER value 'redis'
+set container name librenms environment DB_HOST value '10.0.0.42'
+set container name librenms environment DB_PASSWORD value "${SECRET_LIBRENMS_DB_PASSWORD}"
+set container name librenms environment DB_TIMEOUT value '60'
+set container name librenms environment DB_USER value 'librenms'
+set container name librenms environment LIBRENMS_WEATHERMAP value 'false'
+set container name librenms environment MAX_INPUT_VARS value '1000'
+set container name librenms environment MEMORY_LIMIT value '256M'
+set container name librenms environment OPCACHE_MEM_SIZE value '128'
+set container name librenms environment REDIS_HOST value '10.0.0.43'
+set container name librenms environment SESSION_DRIVER value 'redis'
+set container name librenms environment TZ value 'America/Los_Angeles'
+set container name librenms environment UPLOAD_MAX_SIZE value '16M'
+set container name librenms environment APP_KEY value "${SECRET_LIBRENMS_APP_KEY}"
+set container name librenms host-name 'librenms'
+set container name librenms image 'librenms/librenms:24.2.0'
+set container name librenms network containers address '10.0.0.41'
+set container name librenms volume data destination '/data'
+set container name librenms volume data mode 'rw'
+set container name librenms volume data source '/config/containers/librenms/config'
+# LibreNMS Database
+set container name librenms-db command 'mysqld --innodb-file-per-table=1 --lower-case-table-names=0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+set container name librenms-db environment MYSQL_ALLOW_EMPTY_PASSWORD value 'true'
+set container name librenms-db environment MYSQL_DATABASE value 'librenms'
+set container name librenms-db environment MYSQL_PASSWORD value "${SECRET_LIBRENMS_DB_PASSWORD}"
+set container name librenms-db environment MYSQL_USER value 'librenms'
+set container name librenms-db environment TZ value 'America/Los_Angeles'
+set container name librenms-db image 'mariadb:10.5'
+set container name librenms-db network containers address '10.0.0.42'
+set container name librenms-db volume config destination '/var/lib/mysql'
+set container name librenms-db volume config mode 'rw'
+set container name librenms-db volume config source '/config/containers/librenms/database'
+# LibreNMS Dispatcher
+set container name librenms-dispatcher allow-host-networks
+set container name librenms-dispatcher cap-add 'net-raw'
+set container name librenms-dispatcher cap-add 'net-admin'
+set container name librenms-dispatcher environment DB_HOST value '10.0.0.42'
+set container name librenms-dispatcher environment DB_PASSWORD value "${SECRET_LIBRENMS_DB_PASSWORD}"
+set container name librenms-dispatcher environment DB_TIMEOUT value '60'
+set container name librenms-dispatcher environment DB_USER value 'librenms'
+set container name librenms-dispatcher environment DISPATCHER_NODE_ID value 'dispatcher1'
+set container name librenms-dispatcher environment REDIS_HOST value '10.0.0.43'
+set container name librenms-dispatcher environment SIDECAR_DISPATCHER value '1'
+set container name librenms-dispatcher environment TZ value 'America/Los_Angeles'
+set container name librenms-dispatcher host-name 'librenms-dispatcher'
+set container name librenms-dispatcher image 'librenms/librenms:24.2.0'
+set container name librenms-dispatcher volume config destination '/data'
+set container name librenms-dispatcher volume config mode 'rw'
+set container name librenms-dispatcher volume config source '/config/containers/librenms/config'
+# LibreNMS Redis
+set container name librenms-redis environment TZ value 'America/Los_Angeles'
+set container name librenms-redis image 'redis:5.0-alpine'
+set container name librenms-redis network containers address '10.0.0.43'
+
+
+
+
 # onepassword-connect
 # set container name onepassword-connect disable
 # set container name onepassword-connect image 'docker.io/1password/connect-api:1.7.2'

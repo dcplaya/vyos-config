@@ -1,6 +1,6 @@
 ---
 creation_rules:
-  - path_regex: .*\.sops\.env
+  - path_regex: (?i).*(sops\.env)
     # Personal, VyOS  <-- will add later
     age: >-
       age1vx8dy8603amp9yuplkgvxaxu37y47d6myfw3urw55n7uazvqe9lsurpkxa
