@@ -10,6 +10,10 @@ set service ntp allow-client address '192.168.0.0/16'
 delete service ntp server
 set service ntp server time.cloudflare.com nts
 
+# SNMP
+set service snmp community public
+set service snmp listen-address 10.255.253.1
+
 # SSH server
 set service ssh listen-address '10.255.253.1'
 set service ssh disable-password-authentication
