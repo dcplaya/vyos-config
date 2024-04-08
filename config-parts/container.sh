@@ -54,7 +54,7 @@ set container name lego-auto allow-host-networks
 set container name lego-auto environment CF_DNS_API_TOKEN value "${SECRET_CLOUDFLARE_CERT_TOKEN}"
 set container name lego-auto environment LA_CACHDIR value '/certs/.cache'
 set container name lego-auto environment LA_DATADIR value '/certs'
-set container name lego-auto environment LA_DOMAINS value "*.${SECRET_DOMAIN} *.cluster-1.${SECRET_DOMAIN} *.cluster-2.${SECRET_DOMAIN} *.server.${SECRET_DOMAIN} *.s3.${SECRET_DOMAIN}"
+set container name lego-auto environment LA_DOMAINS value "*.${SECRET_DOMAIN} *.cluster-1.${SECRET_DOMAIN} *.cluster-2.${SECRET_DOMAIN} *.server.${SECRET_DOMAIN} *.s3.${SECRET_DOMAIN} *.containers.${SECRET_DOMAIN} *.ceph.${SECRET_DOMAIN} *.mgmt.${SECRET_DOMAIN}"
 set container name lego-auto environment LA_EMAIL value "${SECRET_EMAIL}"
 set container name lego-auto environment LA_PROVIDER value 'cloudflare'
 set container name lego-auto environment TZ value 'America/Los_Angeles'
