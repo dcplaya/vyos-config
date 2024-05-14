@@ -7,7 +7,8 @@ plex\.elcarpenter\.com					cluster-1
 auth\.elcarpenter\.com					cluster-1
 request\.elcarpenter\.com				cluster-1
 requests\.elcarpenter\.com				cluster-1
-home\.elcarpenter\.com		    		cluster-1
+# home\.elcarpenter\.com		    		cluster-1
 
 # Cluster-2
 cluster-2\.elcarpenter.com				cluster-2
+home\.elcarpenter\.com		    		cluster-2
